@@ -32,7 +32,7 @@ sleep 30
 # SSH and execute the node.sh script
 for name in $names
 do
-  gcloud compute ssh $name --zone=us-central1-a --internal-ip -- bash -s < ../node.sh  &
+  gcloud compute ssh $name --zone=us-central1-a --internal-ip -- bash -s < ../node.sh &>/dev/null &
 done
 wait
 

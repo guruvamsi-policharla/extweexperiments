@@ -22,6 +22,8 @@ gcloud compute instances start $names \
     --zone us-central1-a\
     --project "batch-threshold" \
 
+wait 30
+
 for name in $names
 do
   echo $name >> $VM_FILE

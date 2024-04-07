@@ -29,4 +29,11 @@ gcloud compute instances create $names \
 
 sleep 30
 
+# SSH and execute the node.sh script
+for name in $names
+do
+  gcloud compute ssh $name --zone=us-central1-a --internal-ip -- bash -s < ../node.sh  &
+done
+wait
+
 trap - INT TERM EXIT

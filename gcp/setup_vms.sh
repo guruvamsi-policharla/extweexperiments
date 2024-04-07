@@ -47,17 +47,9 @@ do
 done
 wait
 
-# SSH and execute the node.sh script
-for name in $names
+# Have the VMs start listening
+for i in $(seq 1 $n)
 do
-  gcloud compute ssh $name --zone=us-central1-a --internal-ip -- bash -s < ../node.sh  &
+  name="node-$i"
+  gcloud compute ssh $name --zone=us-central1-a --command="cd /home/vamsi/extweexperiments/network; /home/vamsi/dpss-env/bin/python3 node.py -a ${addresses[$name]} -i $i" --internal-ip & #fix the indexing here
 done
-wait
-
-
-
-# # Have the VMs start listening
-# for name in $names 
-# do 
-#   gcloud compute ssh $name --zone=us-central1-a --command="cd /extweexperiments/network; python3 node.py -a ${addresses[$name]} -i $n" --internal-ip & #fix this before runningi
-# done

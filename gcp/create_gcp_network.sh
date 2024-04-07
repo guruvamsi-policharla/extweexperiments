@@ -1,5 +1,5 @@
 # check whether host_sockets file exists
-if [ -f /Users/vamsi/Github/extweexperiments/gcp/host_sockets ]; then
+if [ -f /home/vamsi/extweexperiments/gcp/host_sockets ]; then
     echo "host_sockets file exists"
 else
     echo "host_sockets file does not exist"
@@ -7,7 +7,7 @@ else
 fi
 
 # Read the list of ips into an array form host_sockets
-mapfile -t ip_list < /Users/vamsi/Github/extweexperiments/gcp/host_sockets
+mapfile -t ip_list < /home/vamsi/extweexperiments/gcp/host_sockets
 
 # Check that size of ip_list is equal to n
 n=$(<n)
@@ -21,5 +21,5 @@ for i in $(seq 1 $n)
 do
   name="node-$i"
   echo $name
-  gcloud compute ssh $name --zone=us-central1-a --internal-ip --command="cd /home/vamsi/extweexperiments/network; /home/vamsi/dpss-env/bin/python3 node.py -a ${addresses[$name]} -i $i" & #fix the indexing here
+  gcloud compute ssh $name --zone=us-central1-a --internal-ip --command="cd /home/vamsi/extweexperiments/network; /home/vamsi/dpss-env/bin/python3 node.py -a ${ip_list[$((i-1))]} -i $i" & #fix the indexing here
 done

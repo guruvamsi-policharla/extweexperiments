@@ -40,21 +40,15 @@ do
   addresses[$name]="${privip}:50500"
 done
 
-# SCP the host file to each of the weak-machines
+# SCP the host file to each of the nodes
 for name in $names
 do
   gcloud compute scp $DATA_FILE $name:~/ --zone=us-central1-a --internal-ip &
 done
 wait
 
-
-# Have the VMs start listening
-for name in $names 
-do 
-  gcloud compute ssh $name --zone=us-central1-a --command="cd /extweexperiments/network; python3 node.py -a ${addresses[$name]} -i $n" --internal-ip & #fix this before runningi
-done
-
+# # Have the VMs start listening
+# for name in $names 
+# do 
+#   gcloud compute ssh $name --zone=us-central1-a --command="cd /extweexperiments/network; python3 node.py -a ${addresses[$name]} -i $n" --internal-ip & #fix this before runningi
 # done
-# echo "Starting node${1}:${2}"
-# cd network
-# python3 node.py -a "node${1}:${2}" -i $1

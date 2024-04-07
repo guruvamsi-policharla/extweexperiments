@@ -1,4 +1,8 @@
-cd /local/repository/
+# cd /local/repository/
+
+sudo apt install git
+git clone https://github.com/guruvamsi-policharla/extweexperiments.git
+cd extweexperiments
 
 echo "Installing Required Packages"
 
@@ -25,7 +29,7 @@ echo "Building"
 sudo make
 
 echo "Starting node${1}:${2}"
-cd /local/repository/network
+cd network
 python3 node.py -a "node${1}:${2}" -i $1
 
 

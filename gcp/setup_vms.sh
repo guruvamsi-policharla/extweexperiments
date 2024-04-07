@@ -22,7 +22,7 @@ gcloud compute instances start $names \
     --zone us-central1-a\
     --project "batch-threshold" \
 
-wait 30
+sleep 30
 
 for name in $names
 do
@@ -42,16 +42,11 @@ do
   addresses[$name]="${privip}:50500"
 done
 
+echo "Sending host_sockets file to nodes"
+
 # SCP the host file to each of the nodes
 for name in $names
 do
   gcloud compute scp $DATA_FILE $name:~/ --zone=us-central1-a --internal-ip &
 done
 wait
-
-# Have the VMs start listening
-for i in $(seq 1 $n)
-do
-  name="node-$i"
-  gcloud compute ssh $name --zone=us-central1-a --command="cd /home/vamsi/extweexperiments/network; /home/vamsi/dpss-env/bin/python3 node.py -a ${addresses[$name]} -i $i" --internal-ip & #fix the indexing here
-done

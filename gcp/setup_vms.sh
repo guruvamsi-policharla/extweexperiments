@@ -50,9 +50,11 @@ wait
 # SSH and execute the node.sh script
 for name in $names
 do
-  gcloud compute ssh $name --zone=us-central1-a --command="cd $PROJ; chmod +x node.sh; ./node.sh" --internal-ip &
+  gcloud compute ssh $name --zone=us-central1-a --internal-ip -- bash -s < ../node.sh  &
 done
 wait
+
+
 
 # # Have the VMs start listening
 # for name in $names 

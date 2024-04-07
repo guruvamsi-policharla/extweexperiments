@@ -15,7 +15,7 @@ source dpss-env/bin/activate
 echo "Installing Python packages"
 pip3 install numpy grpcio grpcio-tools pytz
 
-sudo apt install git
+sudo apt --assume-yes install git
 git clone https://github.com/guruvamsi-policharla/extweexperiments.git
 cd extweexperiments
 sudo make

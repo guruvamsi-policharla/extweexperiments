@@ -47,6 +47,6 @@ echo "Sending host_sockets file to nodes"
 # SCP the host file to each of the nodes
 for name in $names
 do
-  gcloud compute scp $DATA_FILE $name:~/ --zone=us-central1-a --internal-ip &
+  gcloud compute scp $DATA_FILE $name:~/extweexperiments/gcp/ --zone=us-central1-a --internal-ip &
 done
 wait

@@ -1,6 +1,6 @@
 n=$(< n)
 
-names=$(for i in $(seq 1 $(($n))); do echo "node-$i"; done)
+names=$(for i in $(seq 0 $(($n-1))); do echo "node-$i"; done)
 
 echo $names
 

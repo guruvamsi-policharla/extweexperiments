@@ -16,7 +16,7 @@ rm -f $DATA_FILE
 touch $VM_FILE
 touch $DATA_FILE
 
-names=$(for i in $(seq 1 $(($n))); do echo "node-$i "; done)
+names=$(for i in $(seq 0 $((n-1))); do echo "node-$i "; done)
 
 gcloud compute instances start $names \
     --zone us-central1-a\

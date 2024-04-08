@@ -17,7 +17,7 @@ if [ ${#ip_list[@]} -ne $n ]; then
 fi
 
 # Have the VMs start listening
-for i in $(seq 1 $n)
+for i in $(seq 0 $((n-1)))
 do
   name="node-$i"
   echo $name

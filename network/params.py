@@ -7,7 +7,7 @@ from application import Schnorr, TimeLock, DeadMan, FairExchange
 
 
 # N = [4, 8, 16, 32, 64] # CONFIGURE
-with open('../gcp/n', 'r') as f:
+with open('/home/vamsi/extweexperiments/gcp/n', 'r') as f:
     N = [int(int(f.readline())/2)]
 R = 1 # CONFIGURE
 LOCAL = False # CONFIGURE

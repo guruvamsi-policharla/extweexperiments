@@ -6,7 +6,8 @@ sys.path.append('../src/')
 from application import Schnorr, TimeLock, DeadMan, FairExchange
 
 
-N = [4, 8, 16, 32, 64] # CONFIGURE
+# N = [4, 8, 16, 32, 64] # CONFIGURE
+N = [4]
 R = 1 # CONFIGURE
 LOCAL = False # CONFIGURE
 applications = [FairExchange] # CONFIGURE
@@ -22,7 +23,7 @@ if LOCAL:
     new_addrs = ['localhost' +  ':' + str(50000 + N[-1] + n) for n in range(N[-1])]
 else:
     # read addresses from the file host_sockets. the first n/2 are old_addrs and the rest are new_addrs
-    with open('host_sockets', 'r') as f:
+    with open('../gcp/host_sockets', 'r') as f:
         addrs = f.readlines()
         old_addrs = addrs[:int(len(addrs) / 2)]
         new_addrs = addrs[int(len(addrs) / 2):]

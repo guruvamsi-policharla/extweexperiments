@@ -21,5 +21,5 @@ for i in $(seq 0 $((n-1)))
 do
   name="node-$i"
   echo $name
-  gcloud compute ssh $name --zone=us-central1-a --internal-ip --command="cd /home/vamsi/extweexperiments/network; /home/vamsi/dpss-env/bin/python3 node.py -a ${ip_list[$((i-1))]} -i $((i-1))" & #fix the indexing here
+  gcloud compute ssh $name --zone=us-central1-a --internal-ip --command="cd /home/vamsi/extweexperiments/network; /home/vamsi/dpss-env/bin/python3 node.py -a ${ip_list[$((i))]} -i $((i))" & #fix the indexing here
 done

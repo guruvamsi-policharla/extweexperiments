@@ -4,6 +4,9 @@ echo "Installing gmp"
 sudo apt-get --assume-yes install libgmp-dev
 sudo apt-get --assume-yes install swig
 
+echo "Installing iproute2"
+sudo apt-get --assume-yes install iproute2
+
 echo "Installing pip"
 sudo apt update
 sudo apt --assume-yes install python3-pip

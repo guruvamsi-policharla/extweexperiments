@@ -7,7 +7,8 @@ from application import Schnorr, TimeLock, DeadMan, FairExchange
 
 
 # N = [4, 8, 16, 32, 64] # CONFIGURE
-N = [4]
+with open('../gcp/n', 'r') as f:
+    N = [int(f.readline())]
 R = 1 # CONFIGURE
 LOCAL = False # CONFIGURE
 applications = [FairExchange] # CONFIGURE
